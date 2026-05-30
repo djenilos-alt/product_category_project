@@ -15,12 +15,12 @@ class Product:
 
     @property
     def price(self) -> float:
-        """Получить цену товара."""
+        """Возвращает цену товара."""
         return self.__price
 
     @price.setter
     def price(self, new_price: float) -> None:
-        """Установить новую цену товара."""
+        """Устанавливает новую цену товара."""
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
@@ -29,7 +29,7 @@ class Product:
 
     @classmethod
     def new_product(cls, product_data: dict) -> "Product":
-        """Создание объекта Product из словаря."""
+        """Создает объект Product из словаря."""
         return cls(
             product_data["name"],
             product_data["description"],
