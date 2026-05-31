@@ -2,8 +2,6 @@ from src.product import Product
 
 
 class Category:
-    """Класс категории товаров."""
-
     category_count = 0
     product_count = 0
 
@@ -21,20 +19,25 @@ class Category:
         Category.product_count += len(products)
 
     def add_product(self, product: Product) -> None:
-        """Добавление товара в категорию."""
         self.__products.append(product)
         Category.product_count += 1
 
     @property
     def products(self) -> str:
-        """Строковое представление товаров категории."""
-        result = ""
+        return "".join(
+            f"{product}\n"
+            for product in self.__products
+        )
 
-        for product in self.__products:
-            result += (
-                f"{product.name}, "
-                f"{product.price} руб. "
-                f"Остаток: {product.quantity} шт.\n"
-            )
+    def __str__(self) -> str:
+        """Строковое представление категории."""
+        total_quantity = sum(
+            product.quantity
+            for product in self.__products
+        )
 
-        return result
+        return (
+            f"{self.name}, "
+            f"количество продуктов: "
+            f"{total_quantity} шт."
+        )

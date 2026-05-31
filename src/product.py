@@ -15,12 +15,10 @@ class Product:
 
     @property
     def price(self) -> float:
-        """Возвращает цену товара."""
         return self.__price
 
     @price.setter
     def price(self, new_price: float) -> None:
-        """Устанавливает новую цену товара."""
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
@@ -29,10 +27,27 @@ class Product:
 
     @classmethod
     def new_product(cls, product_data: dict) -> "Product":
-        """Создает объект Product из словаря."""
         return cls(
             product_data["name"],
             product_data["description"],
             product_data["price"],
             product_data["quantity"],
+        )
+
+    def __str__(self) -> str:
+        """Строковое представление товара."""
+        return (
+            f"{self.name}, "
+            f"{self.price} руб. "
+            f"Остаток: {self.quantity} шт."
+        )
+
+    def __add__(self, other: "Product") -> float:
+        """Полная стоимость двух товаров."""
+        if not isinstance(other, Product):
+            raise TypeError("Можно складывать только объекты Product")
+
+        return (
+            self.price * self.quantity
+            + other.price * other.quantity
         )
