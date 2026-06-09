@@ -5,24 +5,19 @@ description = ""
 authors = [
     {name = "Evgenia Los",email = "djeni.los@gmail.com"}
 ]
-requires-python = ">=3.13"
-dependencies = [
-    "pytest (>=9.0.3,<10.0.0)",
-    "pytest-cov (>=7.1.0,<8.0.0)",
-    "flake8 (>=7.3.0,<8.0.0)"
-]
+package-mode = false
 
+[tool.poetry.dependencies]
+python = "^3.13"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.3"
+pytest-cov = "^7.0.0"
+flake8 = "^7.3.0"
+black = "^26.0.0"
+isort = "^7.0.0"
+mypy = "^1.18.2"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[dependency-groups]
-dev = [
-    "black (>=26.5.1,<27.0.0)",
-    "isort (>=8.0.1,<9.0.0)",
-    "mypy (>=2.1.0,<3.0.0)"
-]
-
-[tool.poetry]
-package-mode = false
