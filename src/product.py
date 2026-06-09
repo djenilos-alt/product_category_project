@@ -42,12 +42,13 @@ class Product:
             f"Остаток: {self.quantity} шт."
         )
 
-    def __add__(self, other: "Product") -> float:
-        """Полная стоимость двух товаров."""
-        if not isinstance(other, Product):
-            raise TypeError("Можно складывать только объекты Product")
+    def __add__(self, other):
+        if type(self) is not type(other):
+            raise TypeError(
+                "Нельзя складывать продукты разных типов"
+            )
 
         return (
-            self.price * self.quantity
-            + other.price * other.quantity
+                self.price * self.quantity
+                + other.price * other.quantity
         )

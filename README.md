@@ -49,3 +49,16 @@ poetry run pytest --cov=src --cov-report=term-missing
 
 https://github.com/djenilos-alt/product_category_project
 - 
+
+## Новая функциональность
+
+Добавлены классы-наследники:
+
+- Smartphone
+- LawnGrass
+
+Реализованы:
+
+- ограничения на сложение товаров разных типов;
+- проверка типов при добавлении товаров в категорию;
+- тестирование новой функциональности.

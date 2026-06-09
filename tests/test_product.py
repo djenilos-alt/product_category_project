@@ -1,4 +1,7 @@
 from src import Product
+import pytest
+
+from src import LawnGrass, Smartphone
 
 
 def test_product_initialization():
@@ -57,3 +60,55 @@ def test_price_setter_negative(capsys):
 
     assert "Цена не должна быть нулевая или отрицательная" in captured.out
     assert product.price == 100000.0
+
+
+def test_add_same_type_products():
+    phone_1 = Smartphone(
+        "iPhone",
+        "Телефон",
+        100000.0,
+        2,
+        90.0,
+        "15",
+        256,
+        "Black",
+    )
+
+    phone_2 = Smartphone(
+        "Samsung",
+        "Телефон",
+        80000.0,
+        1,
+        85.0,
+        "S24",
+        256,
+        "White",
+    )
+
+    assert phone_1 + phone_2 == 280000.0
+
+
+def test_add_different_type_products():
+    phone = Smartphone(
+        "iPhone",
+        "Телефон",
+        100000.0,
+        2,
+        90.0,
+        "15",
+        256,
+        "Black",
+    )
+
+    grass = LawnGrass(
+        "Газон",
+        "Трава",
+        500.0,
+        20,
+        "Россия",
+        "14 дней",
+        "Зеленый",
+    )
+
+    with pytest.raises(TypeError):
+        phone + grass
