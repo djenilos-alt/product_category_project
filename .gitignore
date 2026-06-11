@@ -21,9 +21,9 @@ poetry.lock
 .pytest_cache/
 
 # Coverage reports
-htmlcov/
-.coverage
-.coverage.*
+# htmlcov/
+# .coverage
+# .coverage.*
 
 # mypy
 .mypy_cache/
