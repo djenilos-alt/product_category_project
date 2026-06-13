@@ -69,3 +69,15 @@ https://github.com/djenilos-alt/product_category_project
 - Класс-миксин PrintMixin.
 - Product наследуется от BaseProduct и PrintMixin.
 - Добавлены тесты для абстрактного класса и миксина.
+
+## Покрытие тестами
+
+Для проверки покрытия используется pytest-cov.
+
+Команда запуска:
+
+```bash
+poetry run pytest --cov=src --cov-report=html
+
+Текущее покрытие проекта: более 75%.
+Отчет находится в папке htmlcov.

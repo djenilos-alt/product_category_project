@@ -48,3 +48,17 @@ class Category:
             f"количество продуктов: "
             f"{total_quantity} шт."
         )
+
+    def average_price(self) -> float:
+        """Возвращает среднюю цену товаров категории."""
+
+        try:
+            total_price = sum(
+                product.price
+                for product in self.__products
+            )
+
+            return total_price / len(self.__products)
+
+        except ZeroDivisionError:
+            return 0

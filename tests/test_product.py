@@ -2,6 +2,7 @@ from src import Product
 import pytest
 
 from src import LawnGrass, Smartphone
+from src import Product
 
 
 def test_product_initialization():
@@ -112,3 +113,15 @@ def test_add_different_type_products():
 
     with pytest.raises(TypeError):
         phone + grass
+
+    def test_zero_quantity_product():
+        with pytest.raises(
+                ValueError,
+                match="Товар с нулевым количеством не может быть добавлен",
+        ):
+            Product(
+                "Ноутбук",
+                "Игровой",
+                100000.0,
+                0,
+            )

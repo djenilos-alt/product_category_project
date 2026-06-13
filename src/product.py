@@ -6,12 +6,17 @@ class Product(PrintMixin, BaseProduct):
     """Класс товара."""
 
     def __init__(
-            self,
-            name: str,
-            description: str,
-            price: float,
-            quantity: int,
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
     ) -> None:
+
+        if quantity <= 0:
+            raise ValueError(
+                "Товар с нулевым количеством не может быть добавлен"
+            )
 
         self.print_info(
             name,
